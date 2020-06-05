@@ -1,9 +1,6 @@
 function errorHandler(req, res) {
-    /* 
-
-        Your code goes here
-
-    */
+    console.log(req.statusMessage);
+    return res.status(req.errCode).end()
 }
 
 module.exports = errorHandler;

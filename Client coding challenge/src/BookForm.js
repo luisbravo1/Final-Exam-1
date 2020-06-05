@@ -3,9 +3,19 @@ import React from 'react';
 function BookForm( props ){
     return(
         <div>
-            {/*
-                Your code goes here
-            */}
+            <form onSubmit={props.handleBookGet}>
+            <div>
+                <label htmlFor="bookName">
+                Book Name:
+                </label>
+                <input type="text" name="bookName" id="bookName"></input>
+            </div>
+            <div>
+                <button type="submit">
+                Submit
+                </button>
+            </div>
+            </form>
         </div>
     );
 }

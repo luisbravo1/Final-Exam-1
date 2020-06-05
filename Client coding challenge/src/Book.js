@@ -3,9 +3,12 @@ import React from 'react';
 function Book( props ){
     return(
         <div>
-            {/*
-                Your code goes here
-            */}
+            <li>
+                <div>
+                    {props.bookTitle}, {props.bookAuthor}, {props.bookSnippet}
+                    <image src={props.bookThumbnail}></image>
+                </div>
+            </li>
         </div>
     );
 }

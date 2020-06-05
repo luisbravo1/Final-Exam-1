@@ -1,4 +1,5 @@
 const mongoose = require( 'mongoose' );
+const actors = require('./actor-model');
 
 const moviesSchema = mongoose.Schema({
     movie_ID : {
@@ -37,10 +38,28 @@ const Movies = {
                 .catch( err => {
                     throw new Error( err );
                 });
+    },
+    getMovieById : function ( movieID ) {
+        return moviesCollection
+            .findOne({movie_ID: movieID})
+            .populate('actors')
+            .then( createdMovie => {
+                return createdMovie;
+            })
+            .catch( err => {
+                throw new Error( err );
+            });
+    },
+    removeActorFromMovieList : function ( newMovie ) {
+        return moviesCollection
+            .findByIdAndUpdate({movie_ID: id}, {$set: newMovie}, {$new: true})
+            .then(updatedMovie => {
+                return updatedMovie;
+            })
+            .catch(err => {
+                throw new Error(err);
+            });
     }
-    /*
-        Your code goes here
-    */
 }
 
 module.exports = {
